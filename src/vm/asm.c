@@ -143,6 +143,7 @@ static inline kopcode_t BasicBlock_opcode(kBasicBlock *bb)
 static void BasicBlock_strip0(CTX, struct _kBasicBlock *bb)
 {
 	L_TAIL:;
+
 	if(BasicBlock_isVisited(bb)) return;
 	BasicBlock_setVisited(bb, 1);
 	if(bb->jumpNC != NULL) {

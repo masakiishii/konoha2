@@ -68,7 +68,7 @@ class KCODE:
 KCODE_LIST = []
 
 c = 0
-for line in open('genvmrobo.txt', 'r'):
+for line in open('tinyvmop.txt', 'r'):
 	if line.startswith('#') or len(line) == 0: continue
 	if len(line.split()) > 1:
 		kc = KCODE(c ,line)

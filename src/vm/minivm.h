@@ -27,104 +27,88 @@
 // THIS FILE WAS AUTOMATICALLY GENERATED
 
 
-#define OPCODE_NOP ((kopcode_t)0)
-typedef struct klr_NOP_t {
-	KCODE_HEAD;
-} klr_NOP_t;
+//#define OPCODE_NOP ((kopcode_t)0)
+//typedef struct klr_NOP_t {
+//	KCODE_HEAD;
+//} klr_NOP_t;
 
-#define OPCODE_THCODE ((kopcode_t)1)
-typedef struct klr_THCODE_t {
-	KCODE_HEAD;
-	klr_Fth th;
-} klr_THCODE_t;
+//#define OPCODE_THCODE ((kopcode_t)1)
+//typedef struct klr_THCODE_t {
+//	KCODE_HEAD;
+//	klr_Fth th;
+//} klr_THCODE_t;
 
-#define OPCODE_ENTER ((kopcode_t)2)
-typedef struct klr_ENTER_t {
-	KCODE_HEAD;
-} klr_ENTER_t;
+//#define OPCODE_ENTER ((kopcode_t)2)
+//typedef struct klr_ENTER_t {
+//	KCODE_HEAD;
+//} klr_ENTER_t;
 
-#define OPCODE_EXIT ((kopcode_t)3)
-typedef struct klr_EXIT_t {
-	KCODE_HEAD;
-} klr_EXIT_t;
+//#define OPCODE_EXIT ((kopcode_t)3)
+//typedef struct klr_EXIT_t {
+//	KCODE_HEAD;
+//} klr_EXIT_t;
 
-#define OPCODE_NSET ((kopcode_t)4)
-typedef struct klr_NSET_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kint_t n;
-	kclass_t* ty;
-} klr_NSET_t;
+//#define OPCODE_NSET ((kopcode_t)4)
+//typedef struct klr_NSET_t {
+//	KCODE_HEAD;
+//	kreg_t a;
+//	kint_t n;
+//	kclass_t* ty;
+//} klr_NSET_t;
 
-#define OPCODE_NMOV ((kopcode_t)5)
+#define OPCODE_NMOV ((kopcode_t)1)
 typedef struct klr_NMOV_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kreg_t b;
-	kclass_t* ty;
+	int a:7;
+	int b:7;
 } klr_NMOV_t;
 
-#define OPCODE_NMOVx ((kopcode_t)6)
+#define OPCODE_NMOVx ((kopcode_t)2)
 typedef struct klr_NMOVx_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kreg_t b;
-	uintptr_t bx;
-	kclass_t* ty;
+	int a:7;
+	int b:10;
+	unsigned int bx:7;
 } klr_NMOVx_t;
 
-#define OPCODE_XNMOV ((kopcode_t)7)
+#define OPCODE_XNMOV ((kopcode_t)3)
 typedef struct klr_XNMOV_t {
-	KCODE_HEAD;
-	kreg_t a;
-	uintptr_t ax;
-	kreg_t b;
-	kclass_t* ty;
+	int a:10;
+	unsigned int ax:7;
+	int b:7;
 } klr_XNMOV_t;
 
-#define OPCODE_NEW ((kopcode_t)8)
+#define OPCODE_NEW ((kopcode_t)4)
 typedef struct klr_NEW_t {
-	KCODE_HEAD;
-	kreg_t a;
-	uintptr_t p;
-	kclass_t* ty;
+	int a:7;
+	unsigned int p:7;
 } klr_NEW_t;
 
-#define OPCODE_NULL ((kopcode_t)9)
+#define OPCODE_NULL ((kopcode_t)5)
 typedef struct klr_NULL_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kclass_t* ty;
+	int a:10;
 } klr_NULL_t;
 
-#define OPCODE_BOX ((kopcode_t)10)
+#define OPCODE_BOX ((kopcode_t)6)
 typedef struct klr_BOX_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kreg_t b;
-	kclass_t* ty;
+	int a:10;
+	int b:7;
 } klr_BOX_t;
 
-#define OPCODE_UNBOX ((kopcode_t)11)
+#define OPCODE_UNBOX ((kopcode_t)7)
 typedef struct klr_UNBOX_t {
-	KCODE_HEAD;
-	kreg_t a;
-	kreg_t b;
-	kclass_t* ty;
+	int a:7;
+	int b:10;
 } klr_UNBOX_t;
 
-#define OPCODE_CALL ((kopcode_t)12)
+#define OPCODE_CALL ((kopcode_t)8)
 typedef struct klr_CALL_t {
-	KCODE_HEAD;
 	uintptr_t uline;
 	kreg_t thisidx;
 	kreg_t espshift;
 	kObject* tyo;
 } klr_CALL_t;
 
-#define OPCODE_SCALL ((kopcode_t)13)
+#define OPCODE_SCALL ((kopcode_t)9)
 typedef struct klr_SCALL_t {
-	KCODE_HEAD;
 	uintptr_t uline;
 	kreg_t thisidx;
 	kreg_t espshift;
@@ -132,52 +116,72 @@ typedef struct klr_SCALL_t {
 	kObject* tyo;
 } klr_SCALL_t;
 
-#define OPCODE_RET ((kopcode_t)14)
-typedef struct klr_RET_t {
-	KCODE_HEAD;
-} klr_RET_t;
+#define OPCODE_ADD ((kopcode_t)10)
+typedef struct klr_ADD_t {
+	int a:7;
+	int b:7;
+	int c:7;
+}klr_ADD_t;
 
-#define OPCODE_NCALL ((kopcode_t)15)
-typedef struct klr_NCALL_t {
-	KCODE_HEAD;
-} klr_NCALL_t;
+#define OPCODE_SUB ((kopcode_t)11)
+typedef struct klr_SUB_t {
+	int a:7;
+	int b:7;
+	int c:7;
+}klr_SUB_t;
 
-#define OPCODE_BNOT ((kopcode_t)16)
+#define OPCODE_MUL ((kopcode_t)12)
+typedef struct klr_MUL_t {
+	int a:7;
+	int b:7;
+	int c:7;
+}klr_MUL_t;
+
+#define OPCODE_DIV ((kopcode_t)13)
+typedef struct klr_DIV_t {
+	int a:7;
+	int b:7;
+	int c:7;
+}klr_DIV_t;
+
+//#define OPCODE_RET ((kopcode_t)14)
+///typedef struct klr_RET_t {
+//} klr_RET_t;
+
+//#define OPCODE_NCALL ((kopcode_t)15)
+//typedef struct klr_NCALL_t {
+//} klr_NCALL_t;
+
+#define OPCODE_BNOT ((kopcode_t)15)
 typedef struct klr_BNOT_t {
-	KCODE_HEAD;
-	kreg_t c;
-	kreg_t a;
+	int c:7;
+	int a:7;
 } klr_BNOT_t;
 
-#define OPCODE_JMP ((kopcode_t)17)
+#define OPCODE_JMP ((kopcode_t)16)
 typedef struct klr_JMP_t {
-	KCODE_HEAD;
-	kopl_t  *jumppc;
+	kopl_t  *jumppc:10;
 } klr_JMP_t;
 
-#define OPCODE_JMPF ((kopcode_t)18)
+#define OPCODE_JMPF ((kopcode_t)17)
 typedef struct klr_JMPF_t {
-	KCODE_HEAD;
-	kopl_t  *jumppc;
-	kreg_t a;
+	kopl_t  *jumppc:10;
+	int a:7;
 } klr_JMPF_t;
 
-#define OPCODE_SAFEPOINT ((kopcode_t)19)
+#define OPCODE_SAFEPOINT ((kopcode_t)18)
 typedef struct klr_SAFEPOINT_t {
-	KCODE_HEAD;
-	kreg_t espshift;
+	kreg_t espshift:10;
 } klr_SAFEPOINT_t;
 
-#define OPCODE_ERROR ((kopcode_t)20)
+#define OPCODE_ERROR ((kopcode_t)19)
 typedef struct klr_ERROR_t {
-	KCODE_HEAD;
-	kreg_t start;
-	kString* msg;
+	int start:10;
+	kString* msg:10;
 } klr_ERROR_t;
 
-#define OPCODE_VCALL ((kopcode_t)21)
+#define OPCODE_VCALL ((kopcode_t)20)
 typedef struct klr_VCALL_t {
-	KCODE_HEAD;
 	uintptr_t uline;
 	kreg_t thisidx;
 	kreg_t espshift;
@@ -186,7 +190,7 @@ typedef struct klr_VCALL_t {
 } klr_VCALL_t;
 
 	
-#define KOPCODE_MAX ((kopcode_t)22)
+#define KOPCODE_MAX ((kopcode_t)21)
 
 #define VMT_VOID     0
 #define VMT_ADDR     1

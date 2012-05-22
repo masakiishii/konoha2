@@ -2,17 +2,12 @@ NMOV:6             a:rn:7   b:rn:7
 #define NMOV_a(pc)   (*pc << 7  & ((1 << 7)-1))
 #define NMOV_b(pc)   (*pc << 0)
 
-
-
 NMOVx:6            a:rn:7   b:ro:10  bx:u:7
-
 XNMOV:6            a:ro:10  ax:u:7  b:rn:7
-
 NEW:6              a:ro:10    p:u:7
 NULL:6             a:ro:10
 BOX:6              a:ro:10  b:rn:7
 UNBOX:6            a:rn:7   b:ro:10
-
 CALL:6             thisidx:ro:7  espshift:ro:7 cid:rn:16 md:rn:16
 SCALL:6            thisidx:ro:7  espshift:ro:7 cid:rn:16 md:rn:16 
 ADD:6              a:rn:7   b:rn:7   c:rn:7
@@ -21,21 +16,14 @@ MUL:6              a:rn:7   b:rn:7   c:rn:7
 DIV:6              a:rn:7   b:rn:7   c:rn:7
 RET:6
 NCALL:6
-
 BNOT:6             c:rn:7    a:rn:7
 JMP:6              addr:addr:10
 JMPF:6             addr:addr:10 a:rn:7
 SAFEPOINT:6        espshift:ro:10
-
 ERROR:6            start:ro:10  msg:String:10
-
 VCALL:6            thisidx:ro:7  espshift:ro:7 cid:rn:16 md:rn:16
-
 #TRY:6             addr:addr:10   hn:ro:10
 #TRYEND:6          hn:ro:10
 #THROW:6
 #CATCH:6           addr:addr:10  en:ro:10 eid:int:15
-
-
-
 #define iADD_a(op)  ((op & (((1 << n)-1) << x )) >> x)

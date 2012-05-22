@@ -35,6 +35,7 @@
 #ifndef K_OSDLLEXT
 #if defined(__APPLE__)
 #define K_OSDLLEXT        ".dylib"
+
 #elif defined(__linux__)
 #define K_OSDLLEXT        ".so"
 #endif
